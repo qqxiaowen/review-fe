@@ -1,0 +1,84 @@
+<!--
+ * @Date: 2022-03-30 11:12:34
+ * @LastEditors: xiaoWen
+ * @LastEditTime: 2022-08-10 13:49:52
+ * @FilePath: /study/html语义化.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html语义化</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+      header,
+      nav,
+      aside,
+      main,
+      footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ccc;
+        padding: 2px 12px;
+        height: 40px;
+        margin: 4px;
+      }
+
+      body {
+        width: 400px;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .middle {
+        display: flex;
+      }
+      .middle_left {
+        flex: 1;
+      }
+      main {
+        flex-direction: column;
+        height: auto;
+      }
+      aside {
+        height: auto;
+        width: 100px;
+        flex-shrink: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>头部 header</header>
+    <nav>导航栏 nav</nav>
+    <div class="middle">
+      <div class="middle_left">
+        <main>
+          <h1>主内容Main</h1>
+          <article><h2>文章 Article ['ɑ:tikəl]</h2></article>
+          <section>章节 section ['sekʃən]</section>
+        </main>
+      </div>
+      <aside>侧边栏 Aside [ə'said]</aside>
+    </div>
+    <footer>尾部 footer</footer>
+  </body>
+  <!-- <script async></script>
+<script defer></script> -->
+</html>
+
+
+<!-- header 头
+footer 尾
+main 主要内容
+nav 导航
+aside 侧边栏
+article 文章
+section 章节 -->

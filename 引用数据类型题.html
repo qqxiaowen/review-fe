@@ -1,0 +1,30 @@
+<!--
+ * @Date: 2022-07-21 10:37:50
+ * @LastEditors: xiaoWen
+ * @LastEditTime: 2022-08-09 17:22:07
+ * @FilePath: /ui-qywechat-client-web-sub/Users/gemii/Desktop/<!DOCTYPE html>.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let a = { n: 1 };
+    let b = a;
+    // let c = a;
+    a = a.x = { n: 2 }; // 不管顺序，先齿形a.x
+
+    // a = { n: 2 };
+    // a.x = { n: 2 };
+    console.log('a');
+    console.log(a); // {n:2}
+    console.log('b');
+    console.log(b); // {n:1, x:{n:2}}
+    // console.log(c)
+  </script>
+</html>

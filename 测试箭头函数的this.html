@@ -1,0 +1,33 @@
+<!--
+ * @Date: 2022-08-10 10:22:42
+ * @LastEditors: xiaoWen
+ * @LastEditTime: 2022-08-10 10:34:20
+ * @FilePath: /ui-qywechat-client-web/Users/gemii/Desktop/测试箭头函数的this.html
+-->
+<!-- 箭头函数的this看环境上下文：以function为界限，this跟随所在的function中的this，所在function的this又要看调用的对象 -->
+<script>
+  function text1() {
+    console.log(this);
+    (() => {
+      console.log('inside',this)
+    })()
+  }
+
+  const text2 = () => {
+    console.log(this);
+  };
+
+  let obj = {
+    name: 'obj',
+    say1: text1,
+    say2: text2
+  };
+
+  text1(); // window window
+  obj.say1(); // obj obj
+
+  // text2(); // window
+  // obj.say2(); // window
+
+
+</script>

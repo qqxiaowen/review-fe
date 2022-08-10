@@ -1,0 +1,74 @@
+<!--
+ * @Date: 2022-02-10 14:12:09
+ * @LastEditors: xiaoWen
+ * @LastEditTime: 2022-08-10 15:17:14
+ * @FilePath: /study/宏任务微任务执行顺序.html
+-->
+<!-- 发现问题：then的链式调用和awiat之后的代码同属于微任务,但是级别不同，3个then好像等于一个awiat之后代码。具体原因现在不知道，所以执行顺序不比较then和awiat之后的顺序，暂时没啥意义 -->
+<script>
+  /*
+   * @Author: xiaoWen
+   * @Date: 2022-02-10 14:12:09
+   * @LastEditors: xiaoWen
+   * @LastEditTime: 2022-08-10 14:49:19
+   */
+  console.log('script start');
+  async function async1() {
+    const res = await async2();
+    console.log('async1 end', res);
+  }
+  async function async2() {
+    console.log('async2 end');
+    await fn();
+    // +
+    console.log('async2 end2');
+
+    return new Promise(resolve => {
+      console.log('add-promise1');
+      // setTimeout(() => {
+      //   console.log('setTimeout2000');
+      resolve('x');
+      // }, 2000);
+      console.log('add-promise2');
+    })
+    // .then(x => {
+    //   console.log('add-P', x); //+++
+    // }).then(() => {
+    //   console.log('add-p-2')
+    // })
+    // .then(() => {
+    //   console.log('add-p-3')
+    // })
+    // .then(() => {
+    //   console.log('add-p-4')
+    // })
+  }
+  async1();
+
+  async function fn() {
+    console.log('我是fn');
+  }
+
+  setTimeout(function () {
+    console.log('setTimeout');
+  }, 0);
+
+  new Promise(resolve => {
+    console.log('Promise1');
+    resolve();
+    console.log('Promise2');
+  })
+    .then(function () {
+      console.log('p1'); // ++
+    })
+    // .then(function () {
+    //   console.log('p2');
+    // })
+    // .then(function () {
+    //   console.log('p3');
+    // })
+    // .then(function () {
+    //   console.log('p4');
+    // });
+  console.log('script end');
+</script>
